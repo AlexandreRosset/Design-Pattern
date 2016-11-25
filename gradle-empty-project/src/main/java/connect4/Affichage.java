@@ -53,4 +53,9 @@ public class Affichage {
     {
         System.out.println("Il faut rentrer un nombre encre 1 et 7.");
     }
+
+    public void clearConsole()
+    {
+        for (int i = 0; i < 50; ++i) System.out.println();
+    }
 }

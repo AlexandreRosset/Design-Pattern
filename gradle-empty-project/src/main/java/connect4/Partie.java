@@ -26,6 +26,7 @@ public class Partie {
 
             if (tourDeJeu(joueuractuel)) {
                 nombreJetonUtilise++;
+                affichage.clearConsole();
                 affichage.afficherPlateau(plateauDeJeu.getPlateauDeJeu());
                 victoire = verifierEtAfficherVictoire(nombreJetonUtilise, joueuractuel);
                 joueuractuel = interversionJoueur(joueuractuel);
