@@ -24,13 +24,15 @@ public class Connect4Controller {
             return "no input";
         }
     }
-
-	public static void main(String[] args) {
-		Connect4Controller controller = new Connect4Controller();
+		/*Connect4Controller controller = new Connect4Controller();
 
         System.out.print("Please enter a number: ");
 		//int number = controller.readInt();
         String number = new Scanner(System.in).next();
-		System.out.println("You entered: " + number);
+		System.out.println("You entered: " + number);*/
+
+	public static void main(String[] args) {
+        Partie nouvellePartie = new Partie();
+        nouvellePartie.start();
     }
 }

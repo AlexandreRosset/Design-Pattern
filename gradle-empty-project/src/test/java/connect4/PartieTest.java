@@ -20,9 +20,4 @@ public class PartieTest {
     {
         Partie P = new Partie();
     }
-    @Test
-    public void commencerUnePartie()
-    {
-        P.start();
-    }
 }

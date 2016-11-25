@@ -4,6 +4,10 @@ package connect4;
  * Created by alexa on 24/11/2016.
  */
 public class PlateauDeJeu {
+    public CaseDePlateau[][] getPlateauDeJeu() {
+        return plateauDeJeu;
+    }
+
     private CaseDePlateau[][] plateauDeJeu;
 
     public PlateauDeJeu() {
@@ -17,7 +21,7 @@ public class PlateauDeJeu {
 
     public void ajouterUnPiont(int numerosColonne, String symboleJoueur) {
         if (numerosColonne < 1 || numerosColonne > 7) {
-            throw new RuntimeException();
+            throw new HorsDuTableauException();
         }
         modifierLeTableau(numerosColonne, symboleJoueur);
     }
@@ -29,10 +33,11 @@ public class PlateauDeJeu {
             for (int j = 0; j < 6; j++)
             {
                 if (plateauDeJeu[i][j].getValeur() != " "
-                        && plateauDeJeu[i+1][j].getValeur() == plateauDeJeu[i+1][j].getValeur()
-                        && plateauDeJeu[i+2][j].getValeur() == plateauDeJeu[i+2][j].getValeur()
-                        && plateauDeJeu[i+3][j].getValeur() == plateauDeJeu[i+3][j].getValeur())
+                        && plateauDeJeu[i][j].getValeur() == plateauDeJeu[i+1][j].getValeur()
+                        && plateauDeJeu[i+1][j].getValeur() == plateauDeJeu[i+2][j].getValeur()
+                        && plateauDeJeu[i+2][j].getValeur() == plateauDeJeu[i+3][j].getValeur())
                 {
+
                     return true;
                 }
             }
@@ -47,9 +52,9 @@ public class PlateauDeJeu {
             for (int j = 0; j < 3; j++)
             {
                 if (plateauDeJeu[i][j].getValeur() != " "
-                        && plateauDeJeu[i-1][j-1].getValeur() == plateauDeJeu[i-1][j-1].getValeur()
-                        && plateauDeJeu[i-2][j-2].getValeur() == plateauDeJeu[i-2][j-2].getValeur()
-                        && plateauDeJeu[i-3][j-3].getValeur() == plateauDeJeu[i-3][j-3].getValeur())
+                        && plateauDeJeu[i][j].getValeur() == plateauDeJeu[i-1][j+1].getValeur()
+                        && plateauDeJeu[i-1][j+1].getValeur() == plateauDeJeu[i-2][j+2].getValeur()
+                        && plateauDeJeu[i-2][j+2].getValeur() == plateauDeJeu[i-3][j+3].getValeur())
                 {
                     return true;
                 }
@@ -65,9 +70,9 @@ public class PlateauDeJeu {
             for (int j = 0; j < 3; j++)
             {
                 if (plateauDeJeu[i][j].getValeur() != " "
-                        && plateauDeJeu[i+1][j+1].getValeur() == plateauDeJeu[i+1][j+1].getValeur()
-                        && plateauDeJeu[i+2][j+2].getValeur() == plateauDeJeu[i+2][j+2].getValeur()
-                        && plateauDeJeu[i+3][j+3].getValeur() == plateauDeJeu[i+3][j+3].getValeur())
+                        && plateauDeJeu[i][j].getValeur() == plateauDeJeu[i+1][j+1].getValeur()
+                        && plateauDeJeu[i+1][j+1].getValeur() == plateauDeJeu[i+2][j+2].getValeur()
+                        && plateauDeJeu[i+2][j+2].getValeur() == plateauDeJeu[i+3][j+3].getValeur())
                 {
                     return true;
                 }

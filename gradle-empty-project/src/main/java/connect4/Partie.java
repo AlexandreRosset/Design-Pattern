@@ -1,7 +1,5 @@
 package connect4;
 
-import java.util.Random;
-
 /**
  * Created by alexa on 24/11/2016.
  */
@@ -9,32 +7,44 @@ public class Partie {
     private PlateauDeJeu plateauDeJeu;
     private Joueur joueur1;
     private Joueur joueur2;
-    public Partie()
-    {
+    private Affichage affichage;
+
+
+    public Partie() {
         plateauDeJeu = new PlateauDeJeu();
         joueur1 = new Joueur("X");
         joueur2 = new Joueur("O");
+        affichage = new Affichage();
     }
 
-    public void start()
-    {
+    public void start() {
         Boolean victoire = false;
         int nombreJetonUtilise = 0;
         Joueur joueuractuel = joueur1;
-        while (nombreJetonUtilise < 42 && !victoire)
-        {
-            if (tourDeJeu(joueuractuel))
-            {
+        affichage.afficherPlateau(plateauDeJeu.getPlateauDeJeu());
+        while (nombreJetonUtilise < 42 && !victoire) {
+
+            if (tourDeJeu(joueuractuel)) {
                 nombreJetonUtilise++;
+                affichage.afficherPlateau(plateauDeJeu.getPlateauDeJeu());
+                victoire = verifierEtAfficherVictoire(nombreJetonUtilise, joueuractuel);
                 joueuractuel = interversionJoueur(joueuractuel);
-                victoire = verifierVictoire();
+            }
+
+            else{
+                affichage.afficherPlateau(plateauDeJeu.getPlateauDeJeu());
             }
         }
     }
 
-    private Boolean verifierVictoire()
-    {
-        return (plateauDeJeu.victoireDiagonaleDroite() || plateauDeJeu.victoireDiagonaleGauche() || plateauDeJeu.victoireHorizontale() || plateauDeJeu.victoireVertical());
+    private Boolean verifierEtAfficherVictoire(int nombreJetonUtilise, Joueur joueuractuel) {
+        Boolean victoire = (plateauDeJeu.victoireDiagonaleDroite() || plateauDeJeu.victoireDiagonaleGauche() || plateauDeJeu.victoireHorizontale() || plateauDeJeu.victoireVertical());
+        if (victoire) {
+            affichage.afficherVictoire(joueuractuel);
+        }else if (nombreJetonUtilise >= 42){
+            affichage.afficherEgalite();
+        }
+        return victoire;
     }
 
     private Joueur interversionJoueur(Joueur joueuractuel) {
@@ -44,12 +54,22 @@ public class Partie {
     }
 
     private Boolean tourDeJeu(Joueur joueur) {
-        Random ran = new Random();
-        int choixJoueur = ran.nextInt(7)+1;
+        int choixJoueur;
+        try {
+            choixJoueur = affichage.choixDuJoueur(joueur);
+        }catch (NumberFormatException numberFormatException) {
+            affichage.afficherMessageMauvaiseEntre();
+            return false;
+        }
         try {
             plateauDeJeu.ajouterUnPiont(choixJoueur, joueur.getSymbole());
         }
         catch (PilePleineException pilePleineException){
+            affichage.afficherMessageColonnePleine();
+            return false;
+        }
+        catch (HorsDuTableauException horsDuTableauException){
+            affichage.afficherMessageHorsDuTableau();
             return false;
         }
         return true;
