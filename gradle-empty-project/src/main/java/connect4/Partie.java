@@ -59,6 +59,7 @@ public class Partie {
         try {
             choixJoueur = affichage.choixDuJoueur(joueur);
         }catch (NumberFormatException numberFormatException) {
+            affichage.clearConsole();
             affichage.afficherMessageMauvaiseEntre();
             return false;
         }
@@ -66,10 +67,12 @@ public class Partie {
             plateauDeJeu.ajouterUnPiont(choixJoueur, joueur.getSymbole());
         }
         catch (PilePleineException pilePleineException){
+            affichage.clearConsole();
             affichage.afficherMessageColonnePleine();
             return false;
         }
         catch (HorsDuTableauException horsDuTableauException){
+            affichage.clearConsole();
             affichage.afficherMessageHorsDuTableau();
             return false;
         }
