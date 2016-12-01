@@ -9,10 +9,10 @@ import static org.junit.Assert.*;
  * Created by alexa on 24/11/2016.
  */
 public class CaseDePlateauTest {
-    private CaseDePlateau c;
+    private CaseDePlateau caseDePlateau;
     @Before
     public void init() {
-        c = new CaseDePlateau();
+        caseDePlateau = new CaseDePlateau();
     }
     @Test
     public void instensiationCaseDePlateau() {
@@ -20,10 +20,10 @@ public class CaseDePlateauTest {
     }
     @Test (expected = RuntimeException.class)
     public void testgetsetValeur() {
-        assertEquals(" ", c.getValeur());
-        c.setValeur("X");
-        assertEquals("X", c.getValeur());
-        c.setValeur("Toto");
-        assertEquals("X", c.getValeur());
+        assertEquals(" ", caseDePlateau.getValeur());
+        caseDePlateau.setValeur("X");
+        assertEquals("X", caseDePlateau.getValeur());
+        caseDePlateau.setValeur("Toto");
+        assertEquals("X", caseDePlateau.getValeur());
     }
 }

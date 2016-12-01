@@ -31,7 +31,7 @@ public class Affichage {
         System.out.println("Il y a eu match nul!");
     }
 
-    public int choixDuJoueur(Joueur joueurActuel)
+    public int tourDuJoueur(Joueur joueurActuel)
     {
         System.out.println("Aux " + joueurActuel.getSymbole() + " de jouer, choisissez une colonne:");
         Scanner scanner = new Scanner(System.in);

@@ -37,7 +37,6 @@ public class PlateauDeJeu {
                         && plateauDeJeu[i+1][j].getValeur() == plateauDeJeu[i+2][j].getValeur()
                         && plateauDeJeu[i+2][j].getValeur() == plateauDeJeu[i+3][j].getValeur())
                 {
-
                     return true;
                 }
             }

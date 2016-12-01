@@ -57,7 +57,7 @@ public class Partie {
     private Boolean tourDeJeu(Joueur joueur) {
         int choixJoueur;
         try {
-            choixJoueur = affichage.choixDuJoueur(joueur);
+            choixJoueur = affichage.tourDuJoueur(joueur);
         }catch (NumberFormatException numberFormatException) {
             affichage.clearConsole();
             affichage.afficherMessageMauvaiseEntre();
